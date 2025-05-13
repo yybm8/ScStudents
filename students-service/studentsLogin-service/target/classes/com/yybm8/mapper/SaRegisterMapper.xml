@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yybm8.mapper.SaRegisterMapper">
+
+    <insert id="register">
+        insert into students(student_username,student_password)
+        values(#{student_username},#{student_password})
+    </insert>
+    <select id="selectStudentUsername" resultType="com.yybm8.pojo.Students">
+        select student_username from students
+    </select>
+
+
+</mapper>

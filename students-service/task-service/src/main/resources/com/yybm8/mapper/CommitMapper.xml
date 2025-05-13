@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yybm8.mapper.CommitMapper">
+    <resultMap id="commits" type="com.yybm8.dto.StudentCommit">
+        <collection property="students" ofType="com.yybm8.pojo.Students">
+            <id property="student_id" column="student_id"/>
+            <result property="student_username" column="student_username"/>
+        </collection>
+        <collection property="commit" ofType="com.yybm8.pojo.Commit">
+            <id property="commit_id" column="commit_id"/>
+            <result property="commit_name" column="commit_name"/>
+            <result property="commit_over" column="commit_over"/>
+        </collection>
+    </resultMap>
+
+
+
+    <select id="selectCommitAll" resultMap="commits">
+        select students.student_id,commit.commit_id,student_username,commit_name,commit_over from students join commit  on commit.student_id=students.student_id where commit.student_id=#{id};
+
+    </select>
+
+</mapper>

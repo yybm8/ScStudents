@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yybm8.mapper.TodataMapper">
+    <resultMap id="TodataAll" type="com.yybm8.dto.StudentTodata">
+        <collection property="students" ofType="com.yybm8.pojo.Students">
+            <id property="student_id" column="student_id"/>
+            <result property="student_username" column="student_username"/>
+        </collection>
+        <collection property="todata" ofType="com.yybm8.pojo.Todata">
+            <id property="todata_id" column="todata_id"/>
+            <result property="todata_name" column="todata_name"/>
+            <result property="todata_gainian" column="todata_gainian"/>
+            <result property="todata_zongjie" column="todata_zongjie"/>
+            <result property="todata_guina" column="todata_guina"/>
+            <result property="todata_miss" column="todata_miss"/>
+            <result property="todata_over" column="todata_over"/>
+        </collection>
+    </resultMap>
+
+
+    <select id="selectTodataAll" resultMap="TodataAll">
+        select students.student_id,todata.todata_id,student_username,todata_over,todata_name,todata_gainian,todata_zongjie,todata_guina,todata_miss from students join todata on students.student_id=todata.studnts_id where students.student_id=#{id}
+    </select>
+</mapper>

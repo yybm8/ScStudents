@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "http://localhost:5173"
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+            max-age: 3600
+      routes:
+        - id: studentsLogin-service
+          uri: lb://studentsLogin-service
+          predicates:
+            - Path=/api/studentsLogin/**
+        - id: task-service
+          uri: lb://task-service
+          predicates:
+            - Path=/api/task/**
+    nacos:
+      server-addr: 127.0.0.1:8848
+  application:
+    name: gateWay-service
+server:
+  port: 80
