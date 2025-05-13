@@ -22,6 +22,7 @@ public class CommitController {
     @Autowired
     private LoginFeign loginFeign;
 
+    //查询进度接口
     @PostMapping("/commit")
     public Result commitName(){
         Result result = loginFeign.loginId();

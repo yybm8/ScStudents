@@ -18,6 +18,7 @@ import java.util.Objects;
 public class SaRegisterController {
     @Autowired
     private SaRegisterService saRegisterService;
+    //普通学生注册接口
     @PostMapping("/register")
     public Result register(@RequestBody Resgister resgister){
         if(resgister.getStudent_username()==null&&resgister.getStudent_password()==null){

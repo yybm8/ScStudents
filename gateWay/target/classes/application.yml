@@ -18,6 +18,10 @@ spring:
           uri: lb://task-service
           predicates:
             - Path=/api/task/**
+        - id: parent-service
+          uri: lb://parent-service
+          predicates:
+            - Path=/api/parent/**
     nacos:
       server-addr: 127.0.0.1:8848
   application:

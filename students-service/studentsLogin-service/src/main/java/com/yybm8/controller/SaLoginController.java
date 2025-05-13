@@ -47,7 +47,7 @@ public class SaLoginController {
         }
 
         else{
-            return Result.noWork();
+            return Result.noLogin();
         }
     }
     //缴费接口
@@ -73,6 +73,7 @@ public class SaLoginController {
             return saLoginService.addClassOut(StpUtil.getLoginIdAsInt(),classId,studentOut);
         }
     }
+    //传递登录id信息接口
     @PostMapping("/loginId")
     public Result loginId()
     {

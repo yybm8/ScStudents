@@ -18,6 +18,7 @@ public class TodataController {
     @Qualifier("com.yybm8.feign.LoginFeign")
     @Autowired
     private LoginFeign loginFeign;
+    //查询登录学生每日任务
     @PostMapping("/todataAll")
     public Result todataAll(){
         Result result = loginFeign.loginId();
