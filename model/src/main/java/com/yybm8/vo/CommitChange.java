@@ -10,6 +10,7 @@ public class CommitChange {
     private Integer student_mani;
     private String student_username;
     private String student_password;
+    private Integer student_mode;
 
     private Integer commit_id;
     private String commit_name;

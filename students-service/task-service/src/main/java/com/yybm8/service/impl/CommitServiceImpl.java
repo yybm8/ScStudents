@@ -21,4 +21,10 @@ public class CommitServiceImpl implements CommitService {
         }
         return Result.success(studentCommits);
     }
+
+    @Override
+    public Boolean updatatodatafile(int todataId, String filePath) {
+        return commitMapper.updatatodatafile(todataId,filePath);
+
+    }
 }

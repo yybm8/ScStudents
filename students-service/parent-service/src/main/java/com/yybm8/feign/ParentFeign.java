@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @FeignClient(value = "studentsLogin-service",fallback = ParentFeignBack.class)
 public interface ParentFeign {
-    @PostMapping("/api/studentsLogin/loginId")
+    @PostMapping("/api/studentsLogin/login/loginId")
     Result loginId();
 
 }

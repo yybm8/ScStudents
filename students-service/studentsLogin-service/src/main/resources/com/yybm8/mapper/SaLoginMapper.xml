@@ -15,4 +15,19 @@
     <update  id="addClassOut">
         update students set student_out=#{studentOut} , class_id=#{classId} where student_id=#{studentId}
     </update>
+    <select id="selectClassOut" resultType="java.lang.Integer">
+        select student_mani from students where student_id=#{loginIdAsInt}
+    </select>
+
+    <select id="selectClassAll" resultType="com.yybm8.pojo.Classs">
+        select * from classs
+    </select>
+
+    <update  id="twoMoni">
+        update students set student_mani=2 where student_id=#{studentId}
+    </update>
+
+    <select id="selectStuMode" resultType="java.lang.Integer">
+        select student_mode from students where student_id= #{studentId}
+    </select>
 </mapper>

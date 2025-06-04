@@ -12,5 +12,6 @@ public class XTokenInterceptor implements RequestInterceptor {
     @Override
     public void apply(RequestTemplate requestTemplate) {
         requestTemplate.header("satoken", StpUtil.getTokenValue());
+        System.out.println("satoken"+StpUtil.getTokenValue());
     }
 }

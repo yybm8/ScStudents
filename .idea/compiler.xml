@@ -14,9 +14,13 @@
         <module name="parent-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ApacheMina" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ApacheMina" options="-parameters" />
       <module name="gateWay" options="-parameters" />
       <module name="model" options="-parameters" />
       <module name="parent-service" options="-parameters" />

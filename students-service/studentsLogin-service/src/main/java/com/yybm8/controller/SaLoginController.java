@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/studentsLogin")
+@RequestMapping("/api/studentsLogin/login")
 public class SaLoginController {
     @Autowired
     private SaLoginService saLoginService;
@@ -30,7 +30,7 @@ public class SaLoginController {
             boolean login = saLoginService.oncelogin(resgister);
             if(login){
                 StpUtil.login(saLoginService.selectStudentId(resgister.getStudent_username()));
-                return Result.yesLogin(StpUtil.getTokenValue());
+                return Result.yesLogin(StpUtil.getTokenInfo());
             }
             else{
                 return Result.noLogin();
@@ -73,6 +73,19 @@ public class SaLoginController {
             return saLoginService.addClassOut(StpUtil.getLoginIdAsInt(),classId,studentOut);
         }
     }
+    //根据当前登录查询缴费信息
+    @PostMapping("/selectClassOut")
+    public Result selectClassOut(){
+        if(!StpUtil.isLogin()){
+            System.out.println("未登录");
+            return Result.fail();
+        }
+        else{
+            System.out.println("已经登录");
+            System.out.println(StpUtil.getLoginIdAsInt());
+            return saLoginService.selectClassOut(StpUtil.getLoginIdAsInt());
+        }
+    }
     //传递登录id信息接口
     @PostMapping("/loginId")
     public Result loginId()
@@ -80,5 +93,21 @@ public class SaLoginController {
         return Result.yesLogin(StpUtil.getLoginIdAsInt());
     }
 
+    //查询班级所有信息
+    @PostMapping("/selectClassAll")
+    public Result selectClassAll(){
+        return saLoginService.selectClassAll();
+    }
+
+    //查询当前登录人员的身份
+    @PostMapping("/selectClassMode")
+     public Result selectClassMode(){
+        if(!StpUtil.isLogin()){
+            return Result.fail();
+        }
+        else{
+            return saLoginService.selectStuMode(StpUtil.getLoginIdAsInt());
+        }
+    }
 
 }

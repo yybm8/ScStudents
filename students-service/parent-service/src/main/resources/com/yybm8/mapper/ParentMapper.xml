@@ -9,4 +9,7 @@
     <select id="selectParentAll" resultType="com.yybm8.pojo.Parent">
         select * from parent
     </select>
+    <insert id="ParentInsert">
+        insert into parent(parent_class,parent_miss,student_id) values(#{parent_class},#{parent_miss},#{student_id})
+    </insert>
 </mapper>

@@ -40,3 +40,7 @@ spring:
 server:
   port: 8010
 
+sa-token:
+  is-share: true  # 必须开启              # 必须开启共享模式
+  is-concurrent: true
+

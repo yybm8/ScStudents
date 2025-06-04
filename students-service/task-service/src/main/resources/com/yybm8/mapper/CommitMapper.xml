@@ -22,4 +22,8 @@
 
     </select>
 
+    <update id="updatatodatafile">
+        update todata set todata_miss=#{filePath} where todata_id=#{todataId}
+    </update>
+
 </mapper>

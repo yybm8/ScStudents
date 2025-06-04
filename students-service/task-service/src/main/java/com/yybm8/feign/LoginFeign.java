@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(value="studentsLogin-service",fallback = LoginFeignBack.class)
 public interface LoginFeign {
-    @PostMapping("/api/studentsLogin/loginId")
+    @PostMapping("/api/studentsLogin/login/loginId")
     Result loginId();
 }

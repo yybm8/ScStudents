@@ -11,4 +11,10 @@ public interface SaLoginService {
     Result outMani(int studentId);
 
     Result addClassOut(int studentId,  int classId,int studentOut);
+
+    Result selectClassOut(int loginIdAsInt);
+
+    Result selectClassAll();
+
+    Result selectStuMode(int studentId);
 }

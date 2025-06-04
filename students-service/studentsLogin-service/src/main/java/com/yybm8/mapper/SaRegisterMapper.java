@@ -12,4 +12,5 @@ public interface SaRegisterMapper {
     boolean register(@Param("student_username") String student_username,@Param("student_password") String student_password);
 
     List<Students> selectStudentUsername();
+
 }

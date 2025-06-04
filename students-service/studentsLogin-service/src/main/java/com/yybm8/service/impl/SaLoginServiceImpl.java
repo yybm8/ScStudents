@@ -1,5 +1,6 @@
 package com.yybm8.service.impl;
 
+import com.yybm8.pojo.Classs;
 import com.yybm8.vo.Resgister;
 import com.yybm8.vo.Result;
 import com.yybm8.mapper.SaLoginMapper;
@@ -7,6 +8,9 @@ import com.yybm8.pojo.Students;
 import com.yybm8.service.SaLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SaLoginServiceImpl implements SaLoginService {
@@ -35,7 +39,34 @@ public class SaLoginServiceImpl implements SaLoginService {
 
     @Override
     public Result addClassOut(int studentId,int classId,int studentOut) {
-        System.out.println(studentId+" "+classId+" "+studentOut);
-        return saLoginMapper.addClassOut(studentId,classId,studentOut)?Result.yesWork():Result.noWork();
+        Boolean twoMoni=saLoginMapper.twoMoni(studentId);
+        Boolean addClassOut=saLoginMapper.addClassOut(studentId,classId,studentOut);
+        if(twoMoni && addClassOut){
+            return Result.yesWork();
+        }
+        else{
+            return Result.noWork();
+        }
+        }
+
+    @Override
+    public Result selectClassOut(int loginIdAsInt) {
+        return Result.success(saLoginMapper.selectClassOut(loginIdAsInt));
+    }
+
+    @Override
+    public Result selectClassAll() {
+        List<Classs>  classsList=saLoginMapper.selectClassAll();
+        if(classsList.isEmpty()){
+            return Result.noData();
+        }
+        else{
+            return Result.success(classsList);
+        }
+    }
+
+    @Override
+    public Result selectStuMode(int studentId) {
+         return Result.success(saLoginMapper.selectStuMode(studentId));
     }
 }

@@ -10,4 +10,5 @@ public class Students {
     private Integer student_mani;
     private String student_username;
     private String student_password;
+     private Integer student_mode;
 }

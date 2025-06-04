@@ -23,4 +23,66 @@
     <select id="selectTodataAll" resultMap="TodataAll">
         select students.student_id,todata.todata_id,student_username,todata_over,todata_name,todata_gainian,todata_zongjie,todata_guina,todata_miss from students join todata on students.student_id=todata.studnts_id where students.student_id=#{id}
     </select>
+
+    <select id="selectTodataCName" resultType="com.yybm8.vo.TodataCommit">
+        select todata.todata_id,todata_name,todata_miss,commit_name,todata_over from todata join commit on todata.commit_id=commit.commit_id where student_id=#{id} and (todata_over=0 or todata_over=2 )
+    </select>
+    <select id="selectTodataCAll" resultType="com.yybm8.vo.TodataCommit">
+        select todata_name,todata_id,todata_guina,todata_zongjie,todata_gainian,todata_over,commit_name,todata_miss from todata join commit on todata.commit_id=commit.commit_id where student_id= #{id}
+    </select>
+    <update id="updatatodataover">
+        update todata set todata_over=1 where todata_id=#{todataId}
+    </update>
+
+    <select id="selectTeacherAll" resultType="com.yybm8.pojo.Teacher">
+        select todata_id,students.student_id,commit_name,student_username,todata_name,todata_gainian,todata_over,todata_zongjie,todata_guina,todata_miss from todata join students on  students.student_id = todata.studnts_id join commit on todata.commit_id =commit.commit_id
+        <where>
+            ( todata_over=1)
+            <if test="id != null">
+                and students.student_id=#{id}
+            </if>
+             <if test="todata_over != null">
+                and todata_over=#{todata_over}
+            </if>
+             <if test="username != null">
+                 and student_username=#{username}
+             </if>
+             <if test="commit_name != null">
+                 and commit_name=#{commit_name}
+             </if>
+             <if test="todata_zongjie != null">
+                 and todata_zongjie=#{todata_zongjie}
+             </if>
+
+        </where>
+        limit #{page},#{pageSize}
+    </select>
+     <select id="selectTodataCount" resultType="int">
+        select count(*) from todata join students on  students.student_id = todata.studnts_id join commit on todata.commit_id =commit.commit_id
+         <where>
+             ( todata_over=1)
+             <if test="id != null">
+                 and students.student_id=#{id}
+             </if>
+             <if test="todata_over != null">
+                 and todata_over=#{todata_over}
+             </if>
+             <if test="username != null">
+                 and student_username=#{username}
+             </if>
+             <if test="commit_name != null">
+                 and commit_name=#{commit_name}
+             </if>
+             <if test="todata_zongjie != null">
+                 and todata_zongjie=#{todata_zongjie}
+             </if>
+         </where>
+     </select>
+
+    <select id="selectAddStudentAll" resultType="com.yybm8.pojo.Teacher">
+        select student_id,student_username from students
+    </select>
+    <select id="selectAddCommitAll" resultType="com.yybm8.pojo.Teacher">
+        select commit_id,commit_name from commit
+    </select>
 </mapper>

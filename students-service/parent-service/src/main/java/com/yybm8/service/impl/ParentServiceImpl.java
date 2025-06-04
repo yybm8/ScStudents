@@ -13,6 +13,18 @@ import java.util.List;
 public class ParentServiceImpl implements ParentService {
     @Autowired
     private ParentMapper parentMapper;
+
+    @Override
+    public Result ParentInsert(int parentId, String parentMiss, int id) {
+        boolean success = parentMapper.ParentInsert(parentId,parentMiss,id);
+        if(success){
+            return Result.yesWork();
+        }
+        else{
+            return Result.noWork();
+        }
+    }
+
     @Override
     public Result SelectParentId(int id) {
         List<Parent> parents= parentMapper.selectParentId(id);

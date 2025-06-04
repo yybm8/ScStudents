@@ -10,7 +10,7 @@ public class Todata {
     private Integer commit_id;
     private String todata_gainian;
     private Integer todata_over;
-    private String todata_zongjie;
+    private Integer todata_zongjie;
     private String todata_guina;
-    private Integer todata_miss;
+    private String todata_miss;
 }

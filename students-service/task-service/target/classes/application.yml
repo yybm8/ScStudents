@@ -1,7 +1,13 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 100000MB #设置单个上传文件的最大大小。
+      max-request-size: 500000MB  # 设置整个 HTTP 请求的最大大小，即一次请求中所有上传文件的总和不能超过该值。
   data:
     # redis配置
     redis:
+      cluster:
+        nodes:
       # Redis数据库索引（默认为0）
       database: 0
       # Redis服务器地址
@@ -29,6 +35,13 @@ spring:
     username: root
     password: 497903
   cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            logger-level: full
+            connect-timeout: 9999999
+            read-timeout: 99999999
     sentinel:
       transport:
         dashboard: localhost:8080 #在需要管理的微服务配置
@@ -44,3 +57,7 @@ server:
 feign:
   sentinel:
     enabled: true
+
+sa-token:
+  is-share: true  # 必须开启
+  is-concurrent: true
